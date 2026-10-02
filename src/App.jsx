@@ -15,24 +15,30 @@ import {
 import "./styles.css";
 
 const products = [
-  { id: 1, name: "Everyday Headphones", category: "Audio", price: 79, rating: 4.7, reviews: 312, tag: "Best match", emoji: "🎧", tone: "violet", score: 96, keywords: ["music","commute","work","wireless","audio","travel"] },
-  { id: 2, name: "Minimal Desk Lamp", category: "Home", price: 48, rating: 4.6, reviews: 184, tag: "Popular", emoji: "💡", tone: "gold", score: 91, keywords: ["desk","study","work","home","lighting","minimal"] },
-  { id: 3, name: "Travel Daypack", category: "Travel", price: 64, rating: 4.8, reviews: 529, tag: "Top rated", emoji: "🎒", tone: "blue", score: 94, keywords: ["travel","trip","bag","backpack","flight","weekend"] },
-  { id: 4, name: "Smart Water Bottle", category: "Wellness", price: 42, rating: 4.5, reviews: 146, tag: "New", emoji: "🥤", tone: "mint", score: 87, keywords: ["fitness","gym","wellness","hydration","health","travel"] },
-  { id: 5, name: "Compact Mechanical Keyboard", category: "Tech", price: 98, rating: 4.9, reviews: 688, tag: "Customer favorite", emoji: "⌨️", tone: "peach", score: 95, keywords: ["keyboard","work","coding","desk","tech","productivity"] },
-  { id: 6, name: "Weekend Sneakers", category: "Lifestyle", price: 88, rating: 4.7, reviews: 402, tag: "Trending", emoji: "👟", tone: "rose", score: 90, keywords: ["shoes","walking","weekend","casual","travel","lifestyle"] },
-  { id: 7, name: "Portable Speaker", category: "Audio", price: 69, rating: 4.6, reviews: 271, tag: "Great value", emoji: "🔊", tone: "indigo", score: 89, keywords: ["speaker","music","party","portable","audio","outdoor","travel"] },
-  { id: 8, name: "Ceramic Pour-Over Set", category: "Home", price: 54, rating: 4.8, reviews: 233, tag: "Staff pick", emoji: "☕", tone: "sand", score: 92, keywords: ["coffee","kitchen","home","gift","morning","ceramic"] },
-  { id: 9, name: "City Running Shoes", category: "Lifestyle", price: 76, rating: 4.8, reviews: 611, tag: "Runner favorite", emoji: "👟", tone: "mint", score: 93, keywords: ["shoe","shoes","sneaker","sneakers","running","walking","fitness","footwear","gym"] },
-  { id: 10, name: "Trail Hiking Shoes", category: "Travel", price: 92, rating: 4.7, reviews: 438, tag: "Outdoor pick", emoji: "🥾", tone: "sand", score: 90, keywords: ["shoe","shoes","boots","hiking","trail","outdoor","travel","walking","footwear"] },
-  { id: 11, name: "Noise-Canceling Earbuds", category: "Audio", price: 89, rating: 4.8, reviews: 742, tag: "Commute pick", emoji: "🎶", tone: "blue", score: 95, keywords: ["music","earbuds","headphones","wireless","commute","audio","travel","noise"] },
-  { id: 12, name: "Ergonomic Desk Stand", category: "Tech", price: 58, rating: 4.6, reviews: 267, tag: "Work setup", emoji: "💻", tone: "indigo", score: 87, keywords: ["desk","work","laptop","stand","office","ergonomic","productivity","tech"] },
-  { id: 13, name: "Insulated Travel Mug", category: "Travel", price: 36, rating: 4.7, reviews: 519, tag: "Everyday value", emoji: "🥤", tone: "gold", score: 88, keywords: ["travel","coffee","mug","drink","commute","insulated","gift"] },
-  { id: 14, name: "Yoga & Mobility Mat", category: "Wellness", price: 45, rating: 4.8, reviews: 326, tag: "Wellness pick", emoji: "🧘", tone: "rose", score: 89, keywords: ["yoga","fitness","gym","wellness","exercise","stretching","mat","health"] },
-  { id: 15, name: "Compact Power Bank", category: "Tech", price: 39, rating: 4.7, reviews: 851, tag: "Travel essential", emoji: "🔋", tone: "peach", score: 94, keywords: ["charger","battery","power","phone","travel","tech","portable","flight"] },
-  { id: 16, name: "Soft Cabin Throw", category: "Home", price: 44, rating: 4.6, reviews: 198, tag: "Cozy pick", emoji: "🧶", tone: "violet", score: 82, keywords: ["blanket","throw","home","cozy","gift","living","soft"] },
-  { id: 17, name: "Everyday Crossbody Bag", category: "Lifestyle", price: 59, rating: 4.7, reviews: 355, tag: "Easy carry", emoji: "👜", tone: "rose", score: 86, keywords: ["bag","crossbody","travel","daily","carry","fashion","lifestyle"] },
-  { id: 18, name: "Digital Kitchen Scale", category: "Home", price: 32, rating: 4.6, reviews: 420, tag: "Kitchen helper", emoji: "⚖️", tone: "mint", score: 84, keywords: ["kitchen","cooking","baking","scale","food","home"] },
+  { id: 1, name: "Everyday Headphones", category: "Audio", price: 79, rating: 4.7, reviews: 312, tag: "Best match", score: 96, image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=1000&q=85", keywords: ["music","commute","work","wireless","audio","travel"] },
+  { id: 2, name: "Minimal Desk Lamp", category: "Home", price: 48, rating: 4.6, reviews: 184, tag: "Popular", score: 91, image: "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=1000&q=85", keywords: ["desk","study","work","home","lighting","minimal"] },
+  { id: 3, name: "Travel Daypack", category: "Travel", price: 64, rating: 4.8, reviews: 529, tag: "Top rated", score: 94, image: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=1000&q=85", keywords: ["travel","trip","bag","backpack","flight","weekend"] },
+  { id: 4, name: "Smart Water Bottle", category: "Wellness", price: 42, rating: 4.5, reviews: 146, tag: "New", score: 87, image: "https://images.unsplash.com/photo-1602143407151-7111542de6e8?auto=format&fit=crop&w=1000&q=85", keywords: ["fitness","gym","wellness","hydration","health","travel"] },
+  { id: 5, name: "Compact Mechanical Keyboard", category: "Tech", price: 98, rating: 4.9, reviews: 688, tag: "Customer favorite", score: 95, image: "https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=1000&q=85", keywords: ["keyboard","work","coding","desk","tech","productivity"] },
+  { id: 6, name: "Weekend Sneakers", category: "Lifestyle", price: 88, rating: 4.7, reviews: 402, tag: "Trending", score: 90, image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=1000&q=85", keywords: ["shoes","walking","weekend","casual","travel","lifestyle"] },
+  { id: 7, name: "Portable Speaker", category: "Audio", price: 69, rating: 4.6, reviews: 271, tag: "Great value", score: 89, image: "https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?auto=format&fit=crop&w=1000&q=85", keywords: ["speaker","music","party","portable","audio","outdoor","travel"] },
+  { id: 8, name: "Ceramic Pour-Over Set", category: "Home", price: 54, rating: 4.8, reviews: 233, tag: "Staff pick", score: 92, image: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1000&q=85", keywords: ["coffee","kitchen","home","gift","morning","ceramic"] },
+  { id: 9, name: "City Running Shoes", category: "Lifestyle", price: 76, rating: 4.8, reviews: 611, tag: "Runner favorite", score: 93, image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=1000&q=85", keywords: ["shoe","shoes","sneaker","sneakers","running","walking","fitness","footwear","gym"] },
+  { id: 10, name: "Trail Hiking Shoes", category: "Travel", price: 92, rating: 4.7, reviews: 438, tag: "Outdoor pick", score: 90, image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=1000&q=85", keywords: ["shoe","shoes","boots","hiking","trail","outdoor","travel","walking","footwear"] },
+  { id: 11, name: "Noise-Canceling Earbuds", category: "Audio", price: 89, rating: 4.8, reviews: 742, tag: "Commute pick", score: 95, image: "https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1?auto=format&fit=crop&w=1000&q=85", keywords: ["music","earbuds","headphones","wireless","commute","audio","travel","noise"] },
+  { id: 12, name: "Ergonomic Desk Stand", category: "Tech", price: 58, rating: 4.6, reviews: 267, tag: "Work setup", score: 87, image: "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=1000&q=85", keywords: ["desk","work","laptop","stand","office","ergonomic","productivity","tech"] },
+  { id: 13, name: "Insulated Travel Mug", category: "Travel", price: 36, rating: 4.7, reviews: 519, tag: "Everyday value", score: 88, image: "https://images.unsplash.com/photo-1526401485004-2aa7f3c8b34e?auto=format&fit=crop&w=1000&q=85", keywords: ["travel","coffee","mug","drink","commute","insulated","gift"] },
+  { id: 14, name: "Yoga & Mobility Mat", category: "Wellness", price: 45, rating: 4.8, reviews: 326, tag: "Wellness pick", score: 89, image: "https://images.unsplash.com/photo-1601925260368-ae2f83cf8b7f?auto=format&fit=crop&w=1000&q=85", keywords: ["yoga","fitness","gym","wellness","exercise","stretching","mat","health"] },
+  { id: 15, name: "Compact Power Bank", category: "Tech", price: 39, rating: 4.7, reviews: 851, tag: "Travel essential", score: 94, image: "https://images.unsplash.com/photo-1609592424824-38e14f6b3c68?auto=format&fit=crop&w=1000&q=85", keywords: ["charger","battery","power","phone","travel","tech","portable","flight"] },
+  { id: 16, name: "Soft Cabin Throw", category: "Home", price: 44, rating: 4.6, reviews: 198, tag: "Cozy pick", score: 82, image: "https://images.unsplash.com/photo-1580301762395-21ce84d00bc6?auto=format&fit=crop&w=1000&q=85", keywords: ["blanket","throw","home","cozy","gift","living","soft"] },
+  { id: 17, name: "Everyday Crossbody Bag", category: "Lifestyle", price: 59, rating: 4.7, reviews: 355, tag: "Easy carry", score: 86, image: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=1000&q=85", keywords: ["bag","crossbody","travel","daily","carry","fashion","lifestyle"] },
+  { id: 18, name: "Digital Kitchen Scale", category: "Home", price: 32, rating: 4.6, reviews: 420, tag: "Kitchen helper", score: 84, image: "https://images.unsplash.com/photo-1556911220-bff31c812dba?auto=format&fit=crop&w=1000&q=85", keywords: ["kitchen","cooking","baking","scale","food","home"] },
+  { id: 19, name: "Wireless Charging Stand", category: "Tech", price: 46, rating: 4.7, reviews: 384, tag: "Desk essential", score: 90, image: "https://images.unsplash.com/photo-1587033411391-5d9e51cce126?auto=format&fit=crop&w=1000&q=85", keywords: ["charger","wireless","phone","desk","tech","power","office"] },
+  { id: 20, name: "Over-Ear Studio Headphones", category: "Audio", price: 119, rating: 4.9, reviews: 576, tag: "Premium audio", score: 96, image: "https://images.unsplash.com/photo-1484704849700-f032a568e944?auto=format&fit=crop&w=1000&q=85", keywords: ["headphones","audio","music","studio","wireless","work"] },
+  { id: 21, name: "Carry-On Organizer Set", category: "Travel", price: 34, rating: 4.6, reviews: 291, tag: "Packing pick", score: 85, image: "https://images.unsplash.com/photo-1553531384-cc64ac80f931?auto=format&fit=crop&w=1000&q=85", keywords: ["travel","packing","organizer","luggage","trip","flight"] },
+  { id: 22, name: "Recovery Massage Roller", category: "Wellness", price: 29, rating: 4.7, reviews: 247, tag: "Recovery pick", score: 86, image: "https://images.unsplash.com/photo-1599058917212-d750089bc07e?auto=format&fit=crop&w=1000&q=85", keywords: ["fitness","recovery","massage","wellness","gym","exercise"] },
+  { id: 23, name: "Stoneware Serving Bowl", category: "Home", price: 38, rating: 4.8, reviews: 203, tag: "Home favorite", score: 88, image: "https://images.unsplash.com/photo-1610701596007-11502861dcfa?auto=format&fit=crop&w=1000&q=85", keywords: ["home","kitchen","bowl","ceramic","serving","dining"] },
+  { id: 24, name: "Classic Canvas Tote", category: "Lifestyle", price: 31, rating: 4.6, reviews: 468, tag: "Daily carry", score: 84, image: "https://images.unsplash.com/photo-1594223274512-ad4803739b7c?auto=format&fit=crop&w=1000&q=85", keywords: ["bag","tote","daily","carry","fashion","lifestyle","shopping"] },
 ];
 
 const KEYS = {
@@ -103,7 +109,7 @@ function App() {
   const [assistantMatches, setAssistantMatches] = useState([]);
   const [assistantNote, setAssistantNote] = useState("");
   const [page, setPage] = useState(1);
-  const pageSize = 9;
+  const [pageSize, setPageSize] = useState(9);
 
   useEffect(() => localStorage.setItem(KEYS.cart, JSON.stringify(cart)), [cart]);
   useEffect(() => localStorage.setItem(KEYS.wishlist, JSON.stringify(wishlist)), [wishlist]);
@@ -155,7 +161,7 @@ function App() {
     return result;
   }, [query, category, sort, activity, wishlist, cart, orders]);
 
-  useEffect(() => setPage(1), [query, category, sort]);
+  useEffect(() => setPage(1), [query, category, sort, pageSize]);
 
   const pageCount = Math.max(1, Math.ceil(filtered.length / pageSize));
   const visibleProducts = filtered.slice((page - 1) * pageSize, page * pageSize);
@@ -381,7 +387,8 @@ function App() {
           <div className="product-grid">
             {visibleProducts.map((product) => (
               <article className="product-card" key={product.id}>
-                <div className={`product-visual tone-${product.tone}`}>
+                <div className="product-visual">
+                  <img src={product.image} alt={product.name} loading="lazy" />
                   <span className="product-tag">{product.tag}</span>
                   <button
                     className={wishlist.includes(product.id) ? "wish active" : "wish"}
@@ -390,7 +397,6 @@ function App() {
                   >
                     <Heart size={16} fill={wishlist.includes(product.id) ? "currentColor" : "none"} />
                   </button>
-                  <div className="emoji">{product.emoji}</div>
                 </div>
 
                 <div className="product-body">
@@ -411,23 +417,30 @@ function App() {
             ))}
           </div>
 
-          {filtered.length > pageSize && (
+          <div className="catalog-pagination">
+            <div className="catalog-summary">
+              <span>
+                Showing {filtered.length ? (page - 1) * pageSize + 1 : 0}-{Math.min(page * pageSize, filtered.length)} of {filtered.length}
+              </span>
+              <label>
+                Items per page
+                <select value={pageSize} onChange={(event) => setPageSize(Number(event.target.value))}>
+                  {[6, 9, 12].map((sizeOption) => (
+                    <option key={sizeOption} value={sizeOption}>{sizeOption}</option>
+                  ))}
+                </select>
+              </label>
+            </div>
             <div className="pagination">
-              <button
-                onClick={() => setPage((current) => Math.max(1, current - 1))}
-                disabled={page === 1}
-              >
+              <button onClick={() => setPage((value) => Math.max(1, value - 1))} disabled={page === 1}>
                 Previous
               </button>
               <span>Page {page} of {pageCount}</span>
-              <button
-                onClick={() => setPage((current) => Math.min(pageCount, current + 1))}
-                disabled={page === pageCount}
-              >
+              <button onClick={() => setPage((value) => Math.min(pageCount, value + 1))} disabled={page === pageCount}>
                 Next
               </button>
             </div>
-          )}
+          </div>
         </section>
       </section>
 
@@ -491,7 +504,7 @@ function App() {
               ) : (
                 cart.map((item) => (
                   <div className="cart-item" key={item.id}>
-                    <div className={`cart-thumb tone-${item.tone}`}>{item.emoji}</div>
+                    <div className="cart-thumb"><img src={item.image} alt={item.name} /></div>
                     <div className="cart-item-main">
                       <strong>{item.name}</strong>
                       <span>${item.price}</span>
