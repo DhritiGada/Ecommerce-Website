@@ -355,3 +355,244 @@ nav a { color: #77766f; text-decoration: none; font-size: 14px; }
   .product-grid { grid-template-columns: 1fr; }
   .catalog-header { align-items: flex-start; flex-direction: column; gap: 10px; }
 }
+
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav-action,
+.icon-nav {
+  border: 1px solid #cbc6bb;
+  background: #fffdf8;
+  color: #252a33;
+  border-radius: 10px;
+  padding: 9px 11px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.nav-action {
+  border: 0;
+  background: transparent;
+  color: #6f6d67;
+}
+
+.icon-nav span {
+  min-width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  background: #202630;
+  color: #fff;
+  font-size: 9px;
+}
+
+.assistant-bar {
+  margin-top: 12px;
+  max-width: 760px;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 10px;
+  background: #fffdf8;
+  border: 1px solid #d6d1c6;
+  border-radius: 13px;
+  padding: 9px 10px 9px 14px;
+}
+
+.assistant-bar input {
+  width: 100%;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  padding: 9px 0;
+  font-size: 14px;
+}
+
+.assistant-bar button,
+.saved-row button,
+.drawer-assistant-form button,
+.assistant-result button {
+  border: 0;
+  border-radius: 9px;
+  background: #202630;
+  color: white;
+  padding: 10px 12px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.plus-sign {
+  font-size: 16px;
+  line-height: 1;
+}
+
+.toast {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #202630;
+  color: white;
+  border-radius: 12px;
+  padding: 12px 14px;
+  font-size: 12px;
+  box-shadow: 0 14px 40px rgba(0,0,0,.18);
+}
+
+.wide-drawer {
+  width: min(560px, 100%);
+}
+
+.drawer-list,
+.assistant-panel {
+  flex: 1;
+  overflow: auto;
+  padding: 18px 0;
+}
+
+.saved-row,
+.assistant-result {
+  display: grid;
+  grid-template-columns: 72px 1fr auto;
+  gap: 12px;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid #ebe5da;
+}
+
+.saved-row strong,
+.assistant-result h3,
+.order-heading strong {
+  display: block;
+  font-size: 14px;
+}
+
+.saved-row span,
+.assistant-result p,
+.order-heading span,
+.order-item {
+  display: block;
+  margin-top: 4px;
+  color: #827f77;
+  font-size: 12px;
+}
+
+.order-card {
+  border: 1px solid #ddd6ca;
+  border-radius: 13px;
+  padding: 14px;
+  margin-bottom: 12px;
+  background: #fffaf2;
+}
+
+.order-heading,
+.order-item {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.order-heading {
+  align-items: flex-start;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #e7e0d5;
+}
+
+.order-item {
+  padding-top: 10px;
+}
+
+.assistant-intro {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  background: #f4eee4;
+  border-radius: 12px;
+  padding: 13px;
+  color: #8d6138;
+}
+
+.assistant-intro p,
+.assistant-note {
+  margin: 0;
+  color: #69655f;
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.drawer-assistant-form {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px;
+  margin: 14px 0;
+}
+
+.drawer-assistant-form input {
+  border: 1px solid #d4cec3;
+  border-radius: 9px;
+  padding: 11px;
+  font-size: 13px;
+}
+
+.assistant-results {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.assistant-thumb {
+  width: 72px;
+  height: 72px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  font-size: 34px;
+}
+
+@media (max-width: 850px) {
+  .header-actions {
+    gap: 5px;
+  }
+
+  .icon-nav {
+    padding: 8px;
+    font-size: 0;
+  }
+
+  .icon-nav span {
+    font-size: 9px;
+  }
+
+  .assistant-bar {
+    grid-template-columns: auto 1fr;
+  }
+
+  .assistant-bar button {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 560px) {
+  .saved-row,
+  .assistant-result {
+    grid-template-columns: 58px 1fr;
+  }
+
+  .saved-row button,
+  .assistant-result button {
+    grid-column: 2;
+    width: fit-content;
+  }
+}
