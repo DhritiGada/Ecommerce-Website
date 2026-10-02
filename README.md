@@ -1,5 +1,9 @@
 # ShopSense: Smart Commerce Experience
 
+## Live Demo
+
+[Open ShopSense](https://shopsense-commerce.vercel.app/)
+
 A modern ecommerce storefront focused on product discovery, relevance, comparison, and a low-friction cart experience.
 
 ## Overview
