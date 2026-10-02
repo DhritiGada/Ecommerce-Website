@@ -4,8 +4,6 @@
 
 [Open ShopSense](https://shopsense-commerce.vercel.app/)
 
-A modern ecommerce storefront focused on product discovery, relevance, comparison, and a low-friction cart experience.
-
 ## Overview
 
 This project began as a PHP + MySQL ecommerce website with login, shopping cart, payment pages, and SQL-backed product data.
