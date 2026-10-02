@@ -18,8 +18,10 @@ The project began as a PHP + MySQL ecommerce website with login, cart, payment p
 - Price sorting
 - Top-rated sorting
 - Product ratings and review counts
-- Expanded multi-category product catalog
-- Paginated product browsing
+- Expanded 24-product multi-category catalog with real product photography
+- Paginated product browsing with Previous/Next controls
+- Configurable page size with 6, 9, or 12 products per page
+- Visible catalog range and page count
 - Visible wishlist with saved-item count
 - Persistent wishlist using Local Storage
 - Add-to-cart acknowledgement
@@ -131,7 +133,7 @@ The catalog includes products across categories such as:
 - Tech
 - Lifestyle
 
-The catalog uses pagination so additional products can be browsed without overloading the page.
+The catalog uses real product photography and pagination so additional products can be browsed without overloading the page. Users can move with Previous/Next controls and choose to display 6, 9, or 12 products per page.
 
 ## Tech Stack
 
