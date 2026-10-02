@@ -19,9 +19,11 @@ The project began as a PHP + MySQL ecommerce website with login, cart, payment p
 - Top-rated sorting
 - Product ratings and review counts
 - Expanded 24-product multi-category catalog with real product photography
-- Paginated product browsing with Previous/Next controls
-- Configurable page size with 6, 9, or 12 products per page
-- Visible catalog range and page count
+- Real catalog pagination with Previous and Next navigation
+- Configurable page-size controls for 6, 9, or 12 products per page
+- Dynamic “Showing X–Y of Z” product range
+- Current page and total page indicators
+- Pagination automatically resets when search, category, sorting, or page size changes
 - Visible wishlist with saved-item count
 - Persistent wishlist using Local Storage
 - Add-to-cart acknowledgement
@@ -121,6 +123,18 @@ Each completed demo order stores:
 - order total
 
 Past purchases are available through the **Orders** action in the header and also contribute to personalization signals.
+
+## Catalog Navigation
+
+ShopSense includes full catalog pagination designed for a larger ecommerce inventory. Users can:
+
+- Choose 6, 9, or 12 products per page
+- Move through results using Previous and Next controls
+- See the current page and total number of pages
+- See the exact visible product range with “Showing X–Y of Z”
+- Search, filter, or sort the catalog while pagination automatically returns to page 1
+
+The controls work against the currently filtered and sorted product set, so page counts and visible ranges update dynamically as the catalog changes.
 
 ## Product Catalog
 
