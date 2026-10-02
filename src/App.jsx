@@ -51,24 +51,42 @@ const readStorage = (key, fallback) => {
   }
 };
 
-const STOP_WORDS = new Set(["i","me","my","a","an","the","for","to","of","with","and","or","something","need","want","looking","show","find","please","that","is","are","under","below","max","budget","best","top","great","strong","review","reviews","high","rated"]);
-
-const SYNONYMS = {
-  shoe: ["shoe","shoes","sneaker","sneakers","footwear","running","walking"],
-  shoes: ["shoe","shoes","sneaker","sneakers","footwear","running","walking"],
-  sneaker: ["shoe","shoes","sneaker","sneakers","footwear"],
-  sneakers: ["shoe","shoes","sneaker","sneakers","footwear"],
-  work: ["work","desk","office","productivity","coding"],
-  travel: ["travel","trip","flight","commute","portable","carry"],
-  music: ["music","audio","speaker","headphones","earbuds"],
-  gym: ["gym","fitness","exercise","wellness","running"],
-  gift: ["gift","home","coffee","lifestyle"],
+const normalizeToken = (token) => {
+  const value = String(token || "").toLowerCase().replace(/[^a-z0-9]/g, "");
+  if (value.length > 4 && value.endsWith("ies")) return value.slice(0, -3) + "y";
+  if (value.length > 4 && value.endsWith("es")) return value.slice(0, -2);
+  if (value.length > 3 && value.endsWith("s")) return value.slice(0, -1);
+  return value;
 };
 
-const intentWords = (text) => {
-  const raw = text.toLowerCase().replace(/[^a-z0-9$ ]/g, " ").split(/\s+/).filter(Boolean);
-  const useful = raw.filter((word) => !STOP_WORDS.has(word) && !/^\$?\d+$/.test(word));
-  return [...new Set(useful.flatMap((word) => SYNONYMS[word] || [word]))];
+const intentWords = (text) =>
+  [...new Set(
+    String(text || "")
+      .toLowerCase()
+      .split(/\s+/)
+      .map(normalizeToken)
+      .filter((word) => word.length >= 3 && !/^\d+$/.test(word))
+  )];
+
+const productTokens = (product) =>
+  [...new Set(
+    [product.name, product.category, product.tag, ...product.keywords]
+      .join(" ")
+      .toLowerCase()
+      .split(/\s+/)
+      .map(normalizeToken)
+      .filter(Boolean)
+  )];
+
+const keywordOverlap = (queryTokens, product) => {
+  const tokens = productTokens(product);
+  return queryTokens.filter((queryToken) =>
+    tokens.some((productToken) =>
+      productToken === queryToken ||
+      productToken.includes(queryToken) ||
+      queryToken.includes(productToken)
+    )
+  );
 };
 
 function App() {
@@ -124,8 +142,7 @@ function App() {
   const filtered = useMemo(() => {
     const terms = intentWords(query);
     let result = products.filter((product) => {
-      const haystack = [product.name, product.category, product.tag, ...product.keywords].join(" ").toLowerCase();
-      const matchesQuery = !terms.length || terms.some((term) => haystack.includes(term));
+      const matchesQuery = !terms.length || keywordOverlap(terms, product).length > 0;
       const matchesCategory = category === "All" || product.category === category;
       return matchesQuery && matchesCategory;
     });
@@ -204,8 +221,7 @@ function App() {
     const budget = budgetMatch ? Number(budgetMatch[1]) : null;
 
     const scored = products.map((product) => {
-      const haystack = [product.name, product.category, product.tag, ...product.keywords].join(" ").toLowerCase();
-      const matchedTerms = words.filter((word) => haystack.includes(word));
+      const matchedTerms = keywordOverlap(words, product);
       let match = matchedTerms.length * 25;
       if (matchedTerms.length) match += personalizedScore(product) * 0.04;
       if (budget !== null) match += product.price <= budget ? 12 : -Math.min(30, (product.price - budget));
