@@ -23,8 +23,8 @@ const products = [
   { id: 6, name: "Weekend Sneakers", category: "Lifestyle", price: 88, rating: 4.7, reviews: 402, tag: "Trending", score: 90, image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=1000&q=85", keywords: ["shoes","walking","weekend","casual","travel","lifestyle"] },
   { id: 7, name: "Portable Speaker", category: "Audio", price: 69, rating: 4.6, reviews: 271, tag: "Great value", score: 89, image: "https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?auto=format&fit=crop&w=1000&q=85", keywords: ["speaker","music","party","portable","audio","outdoor","travel"] },
   { id: 8, name: "Ceramic Pour-Over Set", category: "Home", price: 54, rating: 4.8, reviews: 233, tag: "Staff pick", score: 92, image: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1000&q=85", keywords: ["coffee","kitchen","home","gift","morning","ceramic"] },
-  { id: 9, name: "City Running Shoes", category: "Lifestyle", price: 76, rating: 4.8, reviews: 611, tag: "Runner favorite", score: 93, image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=1000&q=85", keywords: ["shoe","shoes","sneaker","sneakers","running","walking","fitness","footwear","gym"] },
-  { id: 10, name: "Trail Hiking Shoes", category: "Travel", price: 92, rating: 4.7, reviews: 438, tag: "Outdoor pick", score: 90, image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=1000&q=85", keywords: ["shoe","shoes","boots","hiking","trail","outdoor","travel","walking","footwear"] },
+  { id: 9, name: "City Running Shoes", category: "Lifestyle", price: 76, rating: 4.8, reviews: 611, tag: "Runner favorite", score: 93, image: "https://www.printy6.com/template/images/HC07C0120/3ea3b0e6-5393-11ee-a16b-0242ac110003.jpg", keywords: ["shoe","shoes","sneaker","sneakers","running","walking","fitness","footwear","gym"] },
+  { id: 10, name: "Trail Hiking Shoes", category: "Travel", price: 92, rating: 4.7, reviews: 438, tag: "Outdoor pick", score: 90, image: "https://static.ananas.rs/assets/categories/sport_i_rekreacija/oprema_za_planinarenje/Obuca_za_planinarenje.jpg", keywords: ["shoe","shoes","boots","hiking","trail","outdoor","travel","walking","footwear"] },
   { id: 11, name: "Noise-Canceling Earbuds", category: "Audio", price: 89, rating: 4.8, reviews: 742, tag: "Commute pick", score: 95, image: "https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1?auto=format&fit=crop&w=1000&q=85", keywords: ["music","earbuds","headphones","wireless","commute","audio","travel","noise"] },
   { id: 12, name: "Ergonomic Desk Stand", category: "Tech", price: 58, rating: 4.6, reviews: 267, tag: "Work setup", score: 87, image: "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=1000&q=85", keywords: ["desk","work","laptop","stand","office","ergonomic","productivity","tech"] },
   { id: 13, name: "Insulated Travel Mug", category: "Travel", price: 36, rating: 4.7, reviews: 519, tag: "Everyday value", score: 88, image: "https://images.unsplash.com/photo-1526401485004-2aa7f3c8b34e?auto=format&fit=crop&w=1000&q=85", keywords: ["travel","coffee","mug","drink","commute","insulated","gift"] },
@@ -32,8 +32,8 @@ const products = [
   { id: 15, name: "Compact Power Bank", category: "Tech", price: 39, rating: 4.7, reviews: 851, tag: "Travel essential", score: 94, image: "https://images.unsplash.com/photo-1609592424824-38e14f6b3c68?auto=format&fit=crop&w=1000&q=85", keywords: ["charger","battery","power","phone","travel","tech","portable","flight"] },
   { id: 16, name: "Soft Cabin Throw", category: "Home", price: 44, rating: 4.6, reviews: 198, tag: "Cozy pick", score: 82, image: "https://images.unsplash.com/photo-1580301762395-21ce84d00bc6?auto=format&fit=crop&w=1000&q=85", keywords: ["blanket","throw","home","cozy","gift","living","soft"] },
   { id: 17, name: "Everyday Crossbody Bag", category: "Lifestyle", price: 59, rating: 4.7, reviews: 355, tag: "Easy carry", score: 86, image: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=1000&q=85", keywords: ["bag","crossbody","travel","daily","carry","fashion","lifestyle"] },
-  { id: 18, name: "Digital Kitchen Scale", category: "Home", price: 32, rating: 4.6, reviews: 420, tag: "Kitchen helper", score: 84, image: "https://images.unsplash.com/photo-1556911220-bff31c812dba?auto=format&fit=crop&w=1000&q=85", keywords: ["kitchen","cooking","baking","scale","food","home"] },
-  { id: 19, name: "Wireless Charging Stand", category: "Tech", price: 46, rating: 4.7, reviews: 384, tag: "Desk essential", score: 90, image: "https://images.unsplash.com/photo-1587033411391-5d9e51cce126?auto=format&fit=crop&w=1000&q=85", keywords: ["charger","wireless","phone","desk","tech","power","office"] },
+  { id: 18, name: "Digital Kitchen Scale", category: "Home", price: 32, rating: 4.6, reviews: 420, tag: "Kitchen helper", score: 84, image: "https://images.metro-marketplace.eu/item_image/177bd510-a7c4-4683-989b-de2f050c62c1?impolicy=pdp_main_gallery_preview&imwidth=1024", keywords: ["kitchen","cooking","baking","scale","food","home"] },
+  { id: 19, name: "Wireless Charging Stand", category: "Tech", price: 46, rating: 4.7, reviews: 384, tag: "Desk essential", score: 90, image: "https://image.made-in-china.com/2f0j00coYWCuBqnMkH/15W-Qi-Certified-Fast-Charge-Wireless-Charging-Stand.jpg", keywords: ["charger","wireless","phone","desk","tech","power","office"] },
   { id: 20, name: "Over-Ear Studio Headphones", category: "Audio", price: 119, rating: 4.9, reviews: 576, tag: "Premium audio", score: 96, image: "https://images.unsplash.com/photo-1484704849700-f032a568e944?auto=format&fit=crop&w=1000&q=85", keywords: ["headphones","audio","music","studio","wireless","work"] },
   { id: 21, name: "Carry-On Organizer Set", category: "Travel", price: 34, rating: 4.6, reviews: 291, tag: "Packing pick", score: 85, image: "https://images.unsplash.com/photo-1553531384-cc64ac80f931?auto=format&fit=crop&w=1000&q=85", keywords: ["travel","packing","organizer","luggage","trip","flight"] },
   { id: 22, name: "Recovery Massage Roller", category: "Wellness", price: 29, rating: 4.7, reviews: 247, tag: "Recovery pick", score: 86, image: "https://images.unsplash.com/photo-1599058917212-d750089bc07e?auto=format&fit=crop&w=1000&q=85", keywords: ["fitness","recovery","massage","wellness","gym","exercise"] },
@@ -388,7 +388,7 @@ function App() {
             {visibleProducts.map((product) => (
               <article className="product-card" key={product.id}>
                 <div className="product-visual">
-                  <img src={product.image} alt={product.name} loading="lazy" />
+                  <img src={product.image} alt={product.name} loading="lazy" onError={(event) => { event.currentTarget.src = "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1000&q=80"; }} />
                   <span className="product-tag">{product.tag}</span>
                   <button
                     className={wishlist.includes(product.id) ? "wish active" : "wish"}
@@ -504,7 +504,7 @@ function App() {
               ) : (
                 cart.map((item) => (
                   <div className="cart-item" key={item.id}>
-                    <div className="cart-thumb"><img src={item.image} alt={item.name} /></div>
+                    <div className="cart-thumb"><img src={item.image} alt={item.name} onError={(event) => { event.currentTarget.src = "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=600&q=80"; }} /></div>
                     <div className="cart-item-main">
                       <strong>{item.name}</strong>
                       <span>${item.price}</span>
