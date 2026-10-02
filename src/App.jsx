@@ -23,6 +23,16 @@ const products = [
   { id: 6, name: "Weekend Sneakers", category: "Lifestyle", price: 88, rating: 4.7, reviews: 402, tag: "Trending", emoji: "👟", tone: "rose", score: 90, keywords: ["shoes","walking","weekend","casual","travel","lifestyle"] },
   { id: 7, name: "Portable Speaker", category: "Audio", price: 69, rating: 4.6, reviews: 271, tag: "Great value", emoji: "🔊", tone: "indigo", score: 89, keywords: ["speaker","music","party","portable","audio","outdoor","travel"] },
   { id: 8, name: "Ceramic Pour-Over Set", category: "Home", price: 54, rating: 4.8, reviews: 233, tag: "Staff pick", emoji: "☕", tone: "sand", score: 92, keywords: ["coffee","kitchen","home","gift","morning","ceramic"] },
+  { id: 9, name: "City Running Shoes", category: "Lifestyle", price: 76, rating: 4.8, reviews: 611, tag: "Runner favorite", emoji: "👟", tone: "mint", score: 93, keywords: ["shoe","shoes","sneaker","sneakers","running","walking","fitness","footwear","gym"] },
+  { id: 10, name: "Trail Hiking Shoes", category: "Travel", price: 92, rating: 4.7, reviews: 438, tag: "Outdoor pick", emoji: "🥾", tone: "sand", score: 90, keywords: ["shoe","shoes","boots","hiking","trail","outdoor","travel","walking","footwear"] },
+  { id: 11, name: "Noise-Canceling Earbuds", category: "Audio", price: 89, rating: 4.8, reviews: 742, tag: "Commute pick", emoji: "🎶", tone: "blue", score: 95, keywords: ["music","earbuds","headphones","wireless","commute","audio","travel","noise"] },
+  { id: 12, name: "Ergonomic Desk Stand", category: "Tech", price: 58, rating: 4.6, reviews: 267, tag: "Work setup", emoji: "💻", tone: "indigo", score: 87, keywords: ["desk","work","laptop","stand","office","ergonomic","productivity","tech"] },
+  { id: 13, name: "Insulated Travel Mug", category: "Travel", price: 36, rating: 4.7, reviews: 519, tag: "Everyday value", emoji: "🥤", tone: "gold", score: 88, keywords: ["travel","coffee","mug","drink","commute","insulated","gift"] },
+  { id: 14, name: "Yoga & Mobility Mat", category: "Wellness", price: 45, rating: 4.8, reviews: 326, tag: "Wellness pick", emoji: "🧘", tone: "rose", score: 89, keywords: ["yoga","fitness","gym","wellness","exercise","stretching","mat","health"] },
+  { id: 15, name: "Compact Power Bank", category: "Tech", price: 39, rating: 4.7, reviews: 851, tag: "Travel essential", emoji: "🔋", tone: "peach", score: 94, keywords: ["charger","battery","power","phone","travel","tech","portable","flight"] },
+  { id: 16, name: "Soft Cabin Throw", category: "Home", price: 44, rating: 4.6, reviews: 198, tag: "Cozy pick", emoji: "🧶", tone: "violet", score: 82, keywords: ["blanket","throw","home","cozy","gift","living","soft"] },
+  { id: 17, name: "Everyday Crossbody Bag", category: "Lifestyle", price: 59, rating: 4.7, reviews: 355, tag: "Easy carry", emoji: "👜", tone: "rose", score: 86, keywords: ["bag","crossbody","travel","daily","carry","fashion","lifestyle"] },
+  { id: 18, name: "Digital Kitchen Scale", category: "Home", price: 32, rating: 4.6, reviews: 420, tag: "Kitchen helper", emoji: "⚖️", tone: "mint", score: 84, keywords: ["kitchen","cooking","baking","scale","food","home"] },
 ];
 
 const KEYS = {
@@ -41,6 +51,26 @@ const readStorage = (key, fallback) => {
   }
 };
 
+const STOP_WORDS = new Set(["i","me","my","a","an","the","for","to","of","with","and","or","something","need","want","looking","show","find","please","that","is","are","under","below","max","budget","best","top","great","strong","review","reviews","high","rated"]);
+
+const SYNONYMS = {
+  shoe: ["shoe","shoes","sneaker","sneakers","footwear","running","walking"],
+  shoes: ["shoe","shoes","sneaker","sneakers","footwear","running","walking"],
+  sneaker: ["shoe","shoes","sneaker","sneakers","footwear"],
+  sneakers: ["shoe","shoes","sneaker","sneakers","footwear"],
+  work: ["work","desk","office","productivity","coding"],
+  travel: ["travel","trip","flight","commute","portable","carry"],
+  music: ["music","audio","speaker","headphones","earbuds"],
+  gym: ["gym","fitness","exercise","wellness","running"],
+  gift: ["gift","home","coffee","lifestyle"],
+};
+
+const intentWords = (text) => {
+  const raw = text.toLowerCase().replace(/[^a-z0-9$ ]/g, " ").split(/\s+/).filter(Boolean);
+  const useful = raw.filter((word) => !STOP_WORDS.has(word) && !/^\$?\d+$/.test(word));
+  return [...new Set(useful.flatMap((word) => SYNONYMS[word] || [word]))];
+};
+
 function App() {
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState("All");
@@ -54,6 +84,8 @@ function App() {
   const [assistantInput, setAssistantInput] = useState("");
   const [assistantMatches, setAssistantMatches] = useState([]);
   const [assistantNote, setAssistantNote] = useState("");
+  const [page, setPage] = useState(1);
+  const pageSize = 9;
 
   useEffect(() => localStorage.setItem(KEYS.cart, JSON.stringify(cart)), [cart]);
   useEffect(() => localStorage.setItem(KEYS.wishlist, JSON.stringify(wishlist)), [wishlist]);
@@ -90,8 +122,10 @@ function App() {
   const categories = ["All", ...new Set(products.map((product) => product.category))];
 
   const filtered = useMemo(() => {
+    const terms = intentWords(query);
     let result = products.filter((product) => {
-      const matchesQuery = product.name.toLowerCase().includes(query.toLowerCase());
+      const haystack = [product.name, product.category, product.tag, ...product.keywords].join(" ").toLowerCase();
+      const matchesQuery = !terms.length || terms.some((term) => haystack.includes(term));
       const matchesCategory = category === "All" || product.category === category;
       return matchesQuery && matchesCategory;
     });
@@ -102,7 +136,12 @@ function App() {
     if (sort === "Recommended") result = [...result].sort((a, b) => personalizedScore(b) - personalizedScore(a));
 
     return result;
-  }, [query, category, sort]);
+  }, [query, category, sort, activity, wishlist, cart, orders]);
+
+  useEffect(() => setPage(1), [query, category, sort]);
+
+  const pageCount = Math.max(1, Math.ceil(filtered.length / pageSize));
+  const visibleProducts = filtered.slice((page - 1) * pageSize, page * pageSize);
 
   const cartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
   const subtotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
@@ -160,19 +199,25 @@ function App() {
     event.preventDefault();
     const text = assistantInput.trim();
     if (!text) return;
-    const words = text.toLowerCase().replace(/[^a-z0-9$ ]/g, " ").split(/\s+/).filter(Boolean);
+    const words = intentWords(text);
     const budgetMatch = text.match(/(?:under|below|max|budget|\$)\s*\$?(\d+)/i);
     const budget = budgetMatch ? Number(budgetMatch[1]) : null;
 
-    const ranked = products.map((product) => {
+    const scored = products.map((product) => {
       const haystack = [product.name, product.category, product.tag, ...product.keywords].join(" ").toLowerCase();
-      let match = words.filter((word) => haystack.includes(word)).length * 10;
-      match += personalizedScore(product) * 0.08;
-      if (budget !== null) match += product.price <= budget ? 12 : -Math.min(20, (product.price - budget) / 2);
-      if (/best|top|great|strong review|high rated/i.test(text)) match += product.rating * 3;
-      if (/cheap|affordable|value|budget/i.test(text)) match += Math.max(0, 12 - product.price / 10);
-      return { ...product, match };
-    }).sort((a, b) => b.match - a.match).slice(0, 3);
+      const matchedTerms = words.filter((word) => haystack.includes(word));
+      let match = matchedTerms.length * 25;
+      if (matchedTerms.length) match += personalizedScore(product) * 0.04;
+      if (budget !== null) match += product.price <= budget ? 12 : -Math.min(30, (product.price - budget));
+      if (/best|top|great|strong review|high rated/i.test(text)) match += product.rating * 2;
+      if (/cheap|affordable|value|budget/i.test(text)) match += Math.max(0, 10 - product.price / 12);
+      return { ...product, match, matchedTerms };
+    });
+
+    const semanticMatches = words.length ? scored.filter((product) => product.matchedTerms.length > 0) : scored;
+    const ranked = semanticMatches
+      .sort((a, b) => b.match - a.match)
+      .slice(0, 5);
 
     setActivity((current) => ({
       ...current,
@@ -180,9 +225,11 @@ function App() {
     }));
     setAssistantMatches(ranked);
     setAssistantNote(
-      budget
-        ? "Closest matches using your intent, saved behavior, ratings, and a $" + budget + " budget."
-        : "Closest matches using your intent, saved behavior, ratings, and product attributes."
+      ranked.length === 0
+        ? "I could not find a close catalog match. Try a broader use case or category."
+        : budget
+          ? "Only products matching your main intent are ranked, then budget, ratings, and saved behavior refine the order."
+          : "Only products matching your main intent are ranked, then ratings and saved behavior refine the order."
     );
     setAssistantInput("");
     setPanel("assistant");
@@ -316,7 +363,7 @@ function App() {
           </div>
 
           <div className="product-grid">
-            {filtered.map((product) => (
+            {visibleProducts.map((product) => (
               <article className="product-card" key={product.id}>
                 <div className={`product-visual tone-${product.tone}`}>
                   <span className="product-tag">{product.tag}</span>
@@ -347,6 +394,24 @@ function App() {
               </article>
             ))}
           </div>
+
+          {filtered.length > pageSize && (
+            <div className="pagination">
+              <button
+                onClick={() => setPage((current) => Math.max(1, current - 1))}
+                disabled={page === 1}
+              >
+                Previous
+              </button>
+              <span>Page {page} of {pageCount}</span>
+              <button
+                onClick={() => setPage((current) => Math.min(pageCount, current + 1))}
+                disabled={page === pageCount}
+              >
+                Next
+              </button>
+            </div>
+          )}
         </section>
       </section>
 
@@ -502,7 +567,10 @@ function App() {
                       <div>
                         <span>{"Match #" + (index + 1)}</span>
                         <h3>{product.name}</h3>
-                        <p>{product.category + " · $" + product.price + " · " + product.rating + " ★"}</p>
+                        <p>
+                          {product.category + " · $" + product.price + " · " + product.rating + " ★"}
+                          {product.matchedTerms?.length ? " · matched " + product.matchedTerms.slice(0, 3).join(", ") : ""}
+                        </p>
                       </div>
                       <button onClick={() => addToCart(product)}>Add</button>
                     </article>
